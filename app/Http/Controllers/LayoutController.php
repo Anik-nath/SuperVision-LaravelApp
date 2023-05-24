@@ -42,6 +42,12 @@ class LayoutController extends Controller
     public function groupCreate(){
         return view('website.pages.groupCreate');
     }
+    // assign supervisor 
+    public function assignSupervisor(){
+        $groups = group::all();
+        $supervisors = DB::table('users')->where('role','=','supervisor')->get();
+        return view('website.pages.assignSupervisor',compact('groups','supervisors'));
+    } 
 
     public function existingGroup() {
         // $allgroups = group::all();

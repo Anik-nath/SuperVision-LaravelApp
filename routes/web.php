@@ -14,12 +14,13 @@ use App\Http\Controllers\taskController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/',[LayoutController::class, 'welcome']);
 Route::get('/login', [LayoutController::class, 'login']);
 Route::get('/register', [LayoutController::class, 'register']);
 // Route::get('/dashboard', [LayoutController::class, 'dashboard']);
 // Route::get('/users', [LayoutController::class, 'allusers']);
-Route::get('/assign-supervisor', [LayoutController::class, 'dashboard']);
+Route::get('/assign-supervisor', [LayoutController::class, 'assignSupervisor']);
 Route::get('/managetask', [taskController::class, 'managetask']);
 Route::get('/assign-task', [taskController::class, 'assignTask']);
 Route::get('/groups', [LayoutController::class, 'existingGroup']);

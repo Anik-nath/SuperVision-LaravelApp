@@ -19,11 +19,11 @@ class CreateGroupMembersTable extends Migration
             $table->string('mem_id');
             $table->string('mem_section');
             $table->unsignedBigInteger('group_id');
-            $table->foreign('group_id')->references('id')->on('group');
+            $table->foreign('group_id')->references('id')->on('groups');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
              $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

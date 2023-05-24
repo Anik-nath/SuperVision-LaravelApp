@@ -62,3 +62,75 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Project Task breakdown
+
+Sure, here is the converted README.md file with proper style and listing:
+
+
+# Laravel Project Setup
+
+This document provides a step-by-step guide on how to set up a Laravel project.
+
+## Prerequisites
+
+* XAMPP
+* Laravel
+
+## Steps
+
+1. Install XAMPP and Laravel on your system.
+2. Create a new Laravel project.
+3. Configure the project to use a database.
+
+## Database Design
+
+1. Identify the necessary tables for your system, such as students, supervisors, assignments, groups, etc.
+2. Define the relationships between the tables (e.g., one-to-many, many-to-many).
+3. Create the database tables using Laravel's migration feature.
+
+## User Authentication and Authorization
+
+1. Implement user registration and login functionality.
+2. Create roles for different user types (admin, supervisor, student).
+3. Set up access control based on user roles and permissions.
+
+## Admin Functionality
+
+1. Create an admin dashboard to manage the overall system.
+2. Implement functionality to assign supervisors to groups.
+3. Provide CRUD (Create, Read, Update, Delete) operations for supervisors, students, and other relevant entities.
+
+## Supervisor Functionality
+
+1. Create a supervisor dashboard to manage assigned groups and assignments.
+2. Allow supervisors to create assignments for assigned groups.
+3. Implement functionality to track assignment progress by percentage.
+
+## Student Functionality
+
+1. Provide a student dashboard to view and update assignments.
+2. Allow students to create groups and join existing groups.
+3. Implement functionality for students to submit their assignment updates.
+
+## Front-End Design
+
+1. Use Bootstrap or any other CSS framework to create a responsive and visually appealing user interface.
+2. Design the views and layouts for different user roles and functionalities.
+
+## Testing and Validation
+
+1. Test the system thoroughly to ensure proper functionality and error handling.
+2. Validate user inputs to prevent security vulnerabilities and data inconsistencies.
+
+## Deployment
+
+1. Prepare the project for deployment to a production environment.
+2. Configure the necessary server settings (e.g., database connection, environment variables).
+3. Deploy your Laravel application to a hosting platform or your own server.
+
+## Tips
+
+* Break down each task into smaller subtasks as needed.
+* This list provides a general guideline, and you can customize it based on your specific requirements and preferences.
+* Good luck with your project!
