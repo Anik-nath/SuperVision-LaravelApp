@@ -1,6 +1,6 @@
 ## Website Live Link 
 Visit live link: https://supervise1673.000webhostapp.com
-![alt text]([http://url/to/img.png](https://i.ibb.co/GFffGBc/Csrmapture.png))
+![alt text]([https://i.ibb.co/GFffGBc/Csrmapture.png])
 ## Login Panel
 ------As a Admin------
 email: admin@gmail.com
