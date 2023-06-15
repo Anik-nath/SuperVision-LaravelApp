@@ -1,6 +1,7 @@
 ## Website Live Link 
 Visit live link: https://supervise1673.000webhostapp.com
-![alt text]([https://i.ibb.co/GFffGBc/Csrmapture.png])
+![Csrmapture](https://github.com/Anik-nath/SuperVision-LaravelApp/assets/67818482/561a6563-a0b1-4fa6-825b-cec5f616eca6)
+
 ## Login Panel
 ------As a Admin------
 email: admin@gmail.com
