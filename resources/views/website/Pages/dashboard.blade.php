@@ -86,6 +86,11 @@
                 <div class="jjj">
                     <div class="jjj">
                         <h3 class="card-title">Group Task Report</h3>
+                        @if ($allUpdate->isEmpty())
+                        <div class="border border-info py-5 text-center my-5">
+                            <h5 class="text-info"> <b>Message:</b> No update yet from any group. </h5>
+                        </div>
+                        @else
                         <div class="table-responsive mt-4">
                             <table class="table table-striped">
                                 <thead class="bg-thead text-light">
@@ -99,7 +104,8 @@
                                     @foreach($allUpdate as $update)
                                     <tr>
                                         <?php 
-                                            $taskDone = json_decode($update->completed_task);
+                                            
+                                            $taskDone = json_decode($update->completed_task, true);
                                             $done =  count($taskDone);
                                             $total = $countTask;
                                             $to= ($done/$total)*100;
@@ -142,6 +148,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

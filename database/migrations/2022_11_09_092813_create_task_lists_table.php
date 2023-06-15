@@ -15,9 +15,11 @@ class CreateTaskListsTable extends Migration
     {
         Schema::create('task_lists', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('group_id');
+            $table->foreign('group_id')->references('id')->on('tests');
             $table->string('task_name', 30);
             $table->string('description');
-            $table->string('visiting_date', 30);
+            $table->string('due_date', 30);
             $table->unsignedBigInteger('createdBy_id');
             $table->foreign('createdBy_id')->references('id')->on('users');
             $table->timestamps();

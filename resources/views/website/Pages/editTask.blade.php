@@ -11,8 +11,8 @@
                 <form id="assignTask" action="{{ url('/updatetask/'.$singleTask->id) }}" method="post">
                     @csrf
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Visiting Date</label>
-                        <input value="{{$singleTask->visiting_date}}" type="date" name="visiting_date" class="form-control" id="date">
+                        <label for="exampleFormControlInput1" class="form-label">Due Date</label>
+                        <input value="{{$singleTask->due_date}}" type="date" name="due_date" class="form-control" id="date">
                     </div>
                     <label class="form-label">Assign Task</label>
                     <div class="mb-3" id="1">
@@ -23,7 +23,7 @@
                         <textarea value="{{$singleTask->description}}" class="form-control " name="description" placeholder="add description here..." id="description1" rows="3">{{$singleTask->description}}</textarea>
                     </div>                            
                     <!-- <button id="submitBtn" type="button" value="Submit" class="btn btn-success">Submit</button> -->
-                    <input id="submitBtn" type="submit" value="Submit" class="btn btn-info">
+                    <input id="submitBtn" type="submit" value="Update" class="btn btn-info">
                 </form>
             </div>
         </div>

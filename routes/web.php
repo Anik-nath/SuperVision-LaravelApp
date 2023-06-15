@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\taskController;
+use App\Http\Controllers\assignSupervisor;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,18 +16,24 @@ use App\Http\Controllers\taskController;
 |
 */
 
+Route::get('/test', [LayoutController::class, 'test']);
+Route::post('/store-test', [LayoutController::class, 'testgroup']);
+Route::post('/store-supervisor', [assignSupervisor::class, 'assignSupervisor']);
+Route::post('/delete-supervisor/{id}', [assignSupervisor::class , 'deleteSupervisor'] );
+
 Route::get('/',[LayoutController::class, 'welcome']);
 Route::get('/login', [LayoutController::class, 'login']);
 Route::get('/register', [LayoutController::class, 'register']);
 // Route::get('/dashboard', [LayoutController::class, 'dashboard']);
 // Route::get('/users', [LayoutController::class, 'allusers']);
-Route::get('/assign-supervisor', [LayoutController::class, 'assignSupervisor']);
+Route::get('/assign-supervisor', [assignSupervisor::class, 'assignSupervisorView']);
 Route::get('/managetask', [taskController::class, 'managetask']);
 Route::get('/assign-task', [taskController::class, 'assignTask']);
 Route::get('/groups', [LayoutController::class, 'existingGroup']);
 Route::get('/deleteGroup/{id}', [LayoutController::class , 'deleteGroup'] );
 
-Route::get('/create-group', [LayoutController::class, 'groupCreate']);
+// Route::get('/create-group', [LayoutController::class, 'groupCreate']);
+Route::get('/create-group', [LayoutController::class, 'test']);
 Route::get('/create-member', [LayoutController::class, 'groupMember']);
 Route::get('/create-member/{id}', [LayoutController::class, 'groupMemberCreate']);
 Route::get('/group-task', [taskController::class, 'groupTask']);

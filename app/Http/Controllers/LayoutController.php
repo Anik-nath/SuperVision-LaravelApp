@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\user;
 use App\Models\group;
+use App\Models\Test;
+use App\Models\Member;
 use App\Models\taskUpdate;
 use App\Models\groupMember;
 use Session;
@@ -42,17 +44,60 @@ class LayoutController extends Controller
     public function groupCreate(){
         return view('website.pages.groupCreate');
     }
-    // assign supervisor 
-    public function assignSupervisor(){
-        $groups = group::all();
-        $supervisors = DB::table('users')->where('role','=','supervisor')->get();
-        return view('website.pages.assignSupervisor',compact('groups','supervisors'));
-    } 
+
+    // test(group) controller
+    public function test(){
+        $existingMembers = Member::pluck('member_id')->toArray();
+        $memberList = User::select('id', 'username', 'student_id')
+        ->where('role', 'student')
+        ->whereNotIn('student_id', $existingMembers)
+        ->get();
+        return view('website.pages.test',compact('memberList'));
+    }
+    public function testgroup(Request $request)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'name' => 'required|max:255', // Added unique rule
+            'totalMembers' => 'required|numeric|min:1',
+            'member-name' => 'required|array',
+            'member-name.*' => 'required|max:255',
+            'member-id' => 'required|array',
+            'member-id.*' => 'required|max:255',
+        ]);
+
+        // Create a new group instance
+        $group = new Test();
+        $group->name = $validatedData['name'];
+        $group->totalMembers = $validatedData['totalMembers'];
+        $group->assigned_supervisor_id = Session::get('id');
+        $group->save();
+
+        // Create members for the group
+        $members = [];
+        for ($i = 0; $i < $validatedData['totalMembers']; $i++) {
+            $member = new Member();
+            $member->name = $validatedData['member-name'][$i];
+            $member->member_id = $validatedData['member-id'][$i];
+            $members[] = $member;
+        }
+        $group->members()->saveMany($members);
+
+        return redirect()->back()->with('success', 'Group created successfully.');
+    }
+    
 
     public function existingGroup() {
+        // Get the currently logged in supervisor's ID
+        $supervisorId = Session::get('id');
+
+        // Retrieve the assigned groups for the supervisor
+        $allgroups = DB::table('tests')
+            ->where('assigned_supervisor_id', $supervisorId)
+            ->get();
         // $allgroups = group::all();
-        $supervisor = Session::get('id');
-        $allgroups = DB::Table('groups')->select()->where('createdBy_id',$supervisor)->get();
+        // $supervisor = Session::get('id');
+        // $allgroups = DB::Table('groups')->select()->where('createdBy_id',$supervisor)->get();
         return view('website.pages.allgroups',compact('allgroups'));
     }
     public function deleteGroup($id){
@@ -117,3 +162,4 @@ class LayoutController extends Controller
         return redirect()->back()->with('message','division added to the database');
     }
 }
+
